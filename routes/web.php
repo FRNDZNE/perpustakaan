@@ -80,6 +80,7 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function(){
         Route::post('/update/{id}',[SiswaController::class,'update'])->name('update.user');
         Route::get('/detail/{id}',[SiswaController::class,'detail'])->name('detail.user');
         Route::delete('/delete/{id}',[SiswaController::class,'delete'])->name('delete.user');
+        Route::post('/import',[SiswaController::class,'import'])->name('import.user');
     });
 });
 

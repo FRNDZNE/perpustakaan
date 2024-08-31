@@ -9,6 +9,9 @@ use App\Models\Role;
 use Intervention\Image\Laravel\Facades\Image;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use App\Imports\UsersImport;
+use App\Imports\SiswasImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SiswaController extends Controller
 {
@@ -165,5 +168,19 @@ class SiswaController extends Controller
         }
         $siswa->delete();
         return redirect()->back()->with('success','Berhasil Hapus Siswa');
+    }
+
+    public function import()
+    {
+        try {
+            //code...
+            Excel::import(new UsersImport, request()->file('file'));
+            Excel::import(new SiswasImport, request()->file('file'));
+            return redirect()->back()->with('success','Berhasil Upload');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+            //throw $th;
+        }
+
     }
 }
