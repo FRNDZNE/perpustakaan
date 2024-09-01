@@ -12,14 +12,20 @@
                     <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
                         <thead>
                             <th>No</th>
+                            <th>Kategori</th>
                             <th>Judul Buku</th>
+                            <th>Stok</th>
+                            <th>Tersedia</th>
                             <th>Opsi</th>
                         </thead>
                         <tbody>
                             @foreach ($buku as $b)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $b->category->name }}</td>
                                     <td>{{ $b->name }}</td>
+                                    <td>{{ $b->stock }}</td>
+                                    <td>0</td>
                                     <td>
                                     {{-- Button Edit Buku --}}
                                         <a href="{{ route('detail.buku', $b->id) }}" class="btn btn-info btn-md"><i class="fas fa-eye"></i></a>
