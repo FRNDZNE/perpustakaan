@@ -61,4 +61,9 @@ class User extends Authenticatable
         return $this->hasOne(Siswa::class);
     }
 
+    public function loan()
+    {
+        return $this->hasMany(Loan::class);
+    }
+
 }

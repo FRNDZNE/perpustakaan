@@ -39,7 +39,7 @@ class ProfileController extends Controller
 
         switch ($user->role->name) {
             case 'siswa';
-                $siswa = Agency::where('user_id', $user->id)->first();
+                $siswa = Siswa::where('user_id', $user->id)->first();
                 $siswa->contact = $request->contact;
                 $siswa->day = $request->day;
                 $siswa->desc = $request->desc;

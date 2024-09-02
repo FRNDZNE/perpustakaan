@@ -86,4 +86,11 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function(){
 
 Route::prefix('siswa')->middleware(['auth','role:siswa'])->group(function(){
     // Peminjaman Buku
+    Route::prefix('loans')->group(function(){
+        Route::get('/',[LoanController::class,'index_siswa'])->name('siswa.loan.index');
+        Route::post('/store',[LoanController::class,'store_siswa'])->name('siswa.loan.store');
+        Route::post('/delete/{id}',[LoanController::class,'delete_siswa'])->name('siswa.loan.delete');
+    });
+
+    Route::get('/history',[LoanController::class,'history'])->name('siswa.loan.history');
 });
