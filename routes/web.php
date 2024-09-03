@@ -41,7 +41,6 @@ Auth::routes([
 $roles = ['admin','siswa'];
 foreach ($roles as $role) {
     Route::prefix($role)->middleware(['auth', "role:$role"])->group(function () use ($role) {
-        // Route::get('/dashboard', [HomeController::class, '$role'])->name("$role.dashboard");
         Route::get('dashboard', function() use ($role){
             $controller = app(HomeController::class);
             $method = $role;
@@ -82,6 +81,14 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function(){
         Route::delete('/delete/{id}',[SiswaController::class,'delete'])->name('delete.user');
         Route::post('/import',[SiswaController::class,'import'])->name('import.user');
     });
+
+    // Validasi Peminjaman Buku
+    Route::get('/list-permintaan',[LoanController::class,'index_permintaan'])->name('admin.permintaan.index');
+    Route::post('/store',[LoanController::class,'store_admin'])->name('admin.store.permintaan');
+
+    // Pengembalian Buku
+    Route::get('/peminjaman',[LoanController::class,'index_pinjaman'])->name('admin.pinjaman.index');
+    Route::post('/pengembalian',[LoanController::class,'store_pengembalian'])->name('admin.pinjaman.store');
 });
 
 Route::prefix('siswa')->middleware(['auth','role:siswa'])->group(function(){
@@ -89,8 +96,8 @@ Route::prefix('siswa')->middleware(['auth','role:siswa'])->group(function(){
     Route::prefix('loans')->group(function(){
         Route::get('/',[LoanController::class,'index_siswa'])->name('siswa.loan.index');
         Route::post('/store',[LoanController::class,'store_siswa'])->name('siswa.loan.store');
-        Route::post('/delete/{id}',[LoanController::class,'delete_siswa'])->name('siswa.loan.delete');
+        Route::delete('/delete/{id}',[LoanController::class,'delete_siswa'])->name('siswa.loan.delete');
     });
-
+    Route::get('/my-loans',[LoanController::class,'my_loan'])->name('siswa.loan');
     Route::get('/history',[LoanController::class,'history'])->name('siswa.loan.history');
 });

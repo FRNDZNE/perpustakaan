@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('book_id')->constrained()->onDelete('cascade');
             $table->date('loan_date');
             $table->date('must_return');
-            $table->date('return_date');
+            $table->date('return_date')->nullable();
             $table->enum('status',['b','r'])->nullable();
             $table->enum('validate',['c','a','d'])->default('c');
             $table->timestamps();

@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title','Edit Siswa')
-@section('page-title','Edit Siswa')
+@section('title','Profil Saya')
+@section('page-title','Profil Saya')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -13,7 +13,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="uuid" class="form-label">NISN</label>
-                                    <input type="text" name="uuid" id="uuid" class="form-control @error('uuid') is-invalid @enderror" placeholder="Masukan NISN" value="{{ $data->uuid }}">
+                                    <input type="text" readonly name="uuid" id="uuid" class="form-control @error('uuid') is-invalid @enderror" placeholder="Masukan NISN" value="{{ $user->uuid }}">
                                     @error('uuid')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -22,7 +22,7 @@
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label for="name" class="form-label">Nama Lengkap</label>
-                                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Nama Lengkap" value="{{ $data->name }}">
+                                    <input type="text" readonly name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Nama Lengkap" value="{{ $user->name }}">
                                     @error('name')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -33,7 +33,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" name="email" id="" class="form-control @error('email') is-invalid @enderror" placeholder="Masukan Email" value="{{ $data->email }}">
+                                    <input type="email" name="email" id="" class="form-control @error('email') is-invalid @enderror" placeholder="Masukan Email" value="{{ $user->email }}">
                                     @error('email')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -51,7 +51,7 @@
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label for="phone" class="form-label">No Telepon</label>
-                                    <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Masukan No Telepon" value="{{ $data->siswa->phone }}">
+                                    <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Masukan No Telepon" value="{{ $user->siswa->phone }}">
                                     @error('phone')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -70,7 +70,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="address" class="form-label">Alamat</label>
-                                    <textarea name="address" id="address" cols="30" rows="10" class="form-control @error('address') is-invalid @enderror">{{ $data->siswa->address }}</textarea>
+                                    <textarea name="address" id="address" cols="30" rows="10" class="form-control @error('address') is-invalid @enderror">{{ $user->siswa->address }}</textarea>
                                     @error('address')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -78,7 +78,6 @@
                             </div>
                         </div>
                         <hr>
-                        <a href="{{ route('index.user') }}" class="btn btn-md btn-secondary">Kembali</a>
                         <button type="submit" class="btn btn-md btn-warning">Update</button>
                     </form>
                 </div>

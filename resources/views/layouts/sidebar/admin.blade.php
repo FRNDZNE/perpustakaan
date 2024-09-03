@@ -16,15 +16,15 @@
             </li>
             <li class="menu-title">Peminjaman</li>
             <li>
-                <a href="#">
+                <a href="{{ route('admin.permintaan.index') }}">
                     <i class="mdi mdi-view-dashboard-outline"></i>
                     <span> Daftar Permintaan </span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('admin.pinjaman.index') }}">
                     <i class="mdi mdi-view-dashboard-outline"></i>
-                    <span> Daftar Peminjam </span>
+                    <span> Daftar Pinjam </span>
                 </a>
             </li>
             <li class="menu-title">Utilitas</li>

@@ -8,19 +8,19 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('siswa.loan.index') }}">
                     <i class="mdi mdi-view-dashboard-outline"></i>
                     <span> Pinjam Buku </span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('siswa.loan') }}">
                     <i class="mdi mdi-view-dashboard-outline"></i>
                     <span> Daftar Pinjam </span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('siswa.loan.history') }}">
                     <i class="mdi mdi-view-dashboard-outline"></i>
                     <span> History Pinjam </span>
                 </a>
